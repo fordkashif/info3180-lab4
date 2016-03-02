@@ -51,6 +51,16 @@ def add_entry():
     #g.db.commit()
     #flash('New entry was successfully posted')
     #return redirect(url_for('show_entries'))
+    
+@app.route('/filelisting')
+def file_list();:
+    lst=[]
+    rootdir=os.getcwd()
+    print rootdir
+    for subdir, dirs, files in.os.walk(rootdir + '/app/static/uploads'):
+        for file in files:
+            lst.append(file)
+        return render_template('filelisting.html', lst=lst)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
